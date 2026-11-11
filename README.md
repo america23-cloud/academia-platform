@@ -141,6 +141,63 @@ Abrir en el navegador:
 
 > Los comandos anteriores funcionarán cuando la rama correspondiente contenga la configuración inicial. No es necesario instalar PostgreSQL o Docker para ejecutar esta primera versión.
 
+## 🐳 Docker — Development environment
+
+Academia Platform supports containerized execution using Docker and Docker Compose.
+
+### Requirements
+
+- Docker Desktop
+- Docker Engine
+- Docker Compose
+
+### Environment configuration
+
+Create a `.env` file based on `.env.example`:
+
+```env
+NODE_ENV=development
+PORT=3000
+```
+
+### Build and start
+
+```bash
+docker compose up --build -d
+```
+
+The application will be available at:
+
+`http://localhost:3000/`
+
+### Check container status
+
+```bash
+docker compose ps
+```
+
+### View application logs
+
+```bash
+docker compose logs -f
+```
+
+### Stop the application
+
+```bash
+docker compose down
+```
+
+### Rebuild after code changes
+
+```bash
+docker compose up --build -d
+```
+
+**Note:** The current configuration runs the application in a container without a live source-code volume. Changes to the application require rebuilding the image.
+
+The `.env` file is excluded from Git and the Docker build context. Do not commit secrets or credentials.
+
 ## 🌿 Estrategia de ramas
 
 | Rama | Propósito |
